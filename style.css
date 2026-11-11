@@ -142,7 +142,7 @@ body.menu-open { overflow: hidden; }
 /* Hero: foto do estúdio ao fundo, coberta pelo roxo da marca */
 .hero.on-plum { position: relative; isolation: isolate; overflow: hidden; background: var(--plum-deep); color: var(--on-plum); padding-top: clamp(3rem, 7vw, 7rem); }
 .hero::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(100deg, rgba(46, 21, 65, 0.96) 0%, rgba(58, 27, 82, 0.88) 48%, rgba(75, 36, 104, 0.66) 100%), url("vt-fundo.webp") center / cover no-repeat; }
-.hero h1 { max-width: 13ch; }
+.hero h1 { max-width: 17ch; font-size: clamp(2.375rem, 1.3rem + 4.4vw, 4.25rem); }
 .hero h1 span { color: var(--wood); }
 .hero .lead { margin-top: clamp(1.25rem, 2.2vw, 1.875rem); color: var(--on-plum-soft); max-width: 40ch; }
 .hero-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.5rem; margin-top: clamp(1.75rem, 3vw, 2.5rem); }
@@ -236,15 +236,27 @@ body.menu-open { overflow: hidden; }
 .faq-list .answer { padding-bottom: 1.5rem; color: var(--ink-soft); max-width: 58ch; }
 @media (min-width: 56rem) { .faq-head { grid-column: 1 / span 4; } .faq-list { grid-column: 6 / -1; margin-top: 0; } }
 
-/* Chamada final */
+/* Chamada para agendamento */
 .cta { padding-block: clamp(4rem, 3rem + 6vw, 8rem); }
-.cta-box { border-radius: calc(var(--radius) * 2); background: var(--plum); color: var(--on-plum); padding: clamp(2rem, 6vw, 5rem); position: relative; isolation: isolate; overflow: hidden; }
-.cta-box::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(100deg, rgba(58, 27, 82, 0.95), rgba(75, 36, 104, 0.8)), url("vt-fundo.webp") center / cover no-repeat; }
-.cta-box h2 { font-size: clamp(2rem, 1.3rem + 3.2vw, 3.75rem); line-height: 1.02; letter-spacing: -0.04em; max-width: 16ch; }
-.cta-box p { margin-top: 1.25rem; color: var(--on-plum-soft); max-width: 40ch; }
+.cta-box { border-radius: calc(var(--radius) * 2); background: var(--plum); color: var(--on-plum); padding: clamp(1.75rem, 5vw, 4.5rem); position: relative; isolation: isolate; overflow: hidden; display: grid; gap: 2.5rem; }
+.cta-box::before { content: ""; position: absolute; inset: 0; z-index: -1; background: linear-gradient(100deg, rgba(46, 21, 65, 0.96), rgba(75, 36, 104, 0.84)), url("vt-fundo.webp") center / cover no-repeat; }
+.cta-box .eyebrow { color: var(--wood); }
+.cta-box h2 { font-size: clamp(2rem, 1.3rem + 3vw, 3.5rem); line-height: 1.02; letter-spacing: -0.04em; max-width: 15ch; }
+.cta-main > p { margin-top: 1.25rem; color: var(--on-plum-soft); max-width: 42ch; }
 .cta-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; }
 .cta-actions .btn { flex: 1 1 100%; }
+.cta-main > .cta-alt { margin-top: 1.25rem; font-size: var(--fs-small); }
+.cta-alt a { color: var(--on-plum); font-weight: 700; }
+.cta-side { display: grid; gap: 1.5rem; align-content: center; }
+.cta-points { display: grid; gap: 0; border-top: 1px solid var(--line-on-plum); font-size: var(--fs-small); color: var(--on-plum-soft); }
+.cta-points li { padding-block: 0.875rem; border-bottom: 1px solid var(--line-on-plum); display: grid; gap: 0.125rem 1rem; align-items: baseline; }
+@media (min-width: 30rem) { .cta-points li { grid-template-columns: 9.5rem 1fr; } }
+.cta-points b { font-family: var(--display); font-size: 1.0625rem; font-weight: 600; letter-spacing: -0.02em; color: var(--on-plum); }
+.cta-quote .quote { font-size: clamp(1.125rem, 1.05rem + 0.4vw, 1.3125rem); }
+.cta-quote .quote-src { display: block; margin-top: 0.75rem; color: var(--on-plum-soft); }
 @media (min-width: 36rem) { .cta-actions .btn { flex: 0 0 auto; } }
+@media (min-width: 60rem) { .cta-box { grid-template-columns: minmax(0, 7fr) minmax(0, 5fr); gap: clamp(2.5rem, 5vw, 5rem); } }
+.steps-cta { margin-top: clamp(1.75rem, 3vw, 2.5rem); max-width: none; display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem 1.25rem; font-size: var(--fs-small); color: var(--ink-soft); }
 
 /* Páginas internas */
 .page-hero { padding-block: clamp(2.5rem, 5vw, 5rem) clamp(3rem, 6vw, 6rem); }
