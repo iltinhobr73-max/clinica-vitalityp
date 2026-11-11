@@ -34,6 +34,12 @@ AVALIACOES = [
 WA_ICON = ('<svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2a9.9 9.9 0 0 0-8.46 15.03L2 22l5.1-1.54A9.9 9.9 0 1 0 12.04 2Zm0 1.8a8.1 8.1 0 1 1-4.3 14.96l-.3-.19-3.03.92.94-2.94-.2-.31A8.1 8.1 0 0 1 12.04 3.8Zm-3.4 3.9c-.2 0-.5.07-.76.36-.26.28-1 .98-1 2.38 0 1.4 1.02 2.76 1.17 2.95.14.19 2 3.06 4.86 4.29 2.38 1.02 2.87.82 3.39.77.51-.05 1.66-.68 1.9-1.33.23-.66.23-1.22.16-1.34-.07-.12-.26-.19-.54-.33-.29-.14-1.67-.82-1.93-.92-.26-.09-.45-.14-.64.14-.19.29-.73.92-.9 1.11-.16.19-.33.21-.61.07-.29-.14-1.2-.44-2.29-1.41a8.6 8.6 0 0 1-1.58-1.97c-.17-.28-.02-.44.12-.58.13-.12.29-.33.43-.49.14-.17.19-.29.28-.48.1-.19.05-.35-.02-.5-.07-.13-.63-1.55-.88-2.12-.22-.52-.45-.53-.64-.54l-.52-.06Z"/></svg>')
 
 
+# Símbolo da marca: um V de traço arredondado com um ponto acima, lembrando uma pessoa de braços erguidos.
+LOGO = ('<svg class="brand-logo" viewBox="0 0 44 44" aria-hidden="true" focusable="false">'
+        '<path d="M9 16 22 37 35 16" fill="none" stroke="currentColor" stroke-width="7" stroke-linecap="round" stroke-linejoin="round"/>'
+        '<circle class="brand-dot" cx="22" cy="9.5" r="5"/></svg>')
+
+
 def wa(msg):
     return f"https://wa.me/{WHATS}?text={quote(msg)}"
 
@@ -146,7 +152,7 @@ def layout(page, title, desc, body, wa_msg, crumb=None):
 <header class="site-header" data-header>
   <div class="wrap header-in">
     <a class="brand" href="index.html" aria-label="Vitality Pilates e Fisioterapia, página inicial">
-      <span class="brand-mark">Vitality</span><span class="brand-sub">Pilates e Fisioterapia</span>
+      {LOGO}<span class="brand-text"><span class="brand-mark">Vitality</span><span class="brand-sub">Pilates e Fisioterapia</span></span>
     </a>
     <nav class="nav" aria-label="Principal"><ul>{nav_items(page, skip_home=True)}</ul></nav>
     <a class="btn btn--plum btn--sm header-cta" href="{w}" target="_blank" rel="noopener">Agendar pelo WhatsApp</a>
@@ -169,7 +175,7 @@ def layout(page, title, desc, body, wa_msg, crumb=None):
 <footer class="site-footer">
   <div class="wrap grid">
     <div class="footer-brand">
-      <span class="brand-mark">Vitality</span>
+      <span class="brand">{LOGO}<span class="brand-text"><span class="brand-mark">Vitality</span><span class="brand-sub">Pilates e Fisioterapia</span></span></span>
       <p>Estúdio de Pilates e fisioterapia na Maraponga, em Fortaleza.</p>
     </div>
     <div class="footer-col">
@@ -545,12 +551,20 @@ def page_contato():
 
 PAGES = {"index.html": page_index, "pilates.html": page_pilates, "fisioterapia.html": page_fisio, "contato.html": page_contato}
 FAVICON = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64"><rect width="64" height="64" rx="16" fill="#4b2468"/>'
-           '<text x="32" y="46" text-anchor="middle" font-family="Arial, sans-serif" font-weight="700" font-size="40" fill="#fbf8f4">V</text></svg>')
+           '<path d="M19 26 32 47 45 26" fill="none" stroke="#fbf8f4" stroke-width="7.5" stroke-linecap="round" stroke-linejoin="round"/>'
+           '<circle cx="32" cy="17" r="5.5" fill="#e2a15a"/></svg>')
+# Versão completa do logotipo (símbolo + nome), para usar fora do site.
+LOGO_SVG = ('<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 80" role="img" aria-label="Vitality Pilates e Fisioterapia">'
+            '<path d="M14 28 36 64 58 28" fill="none" stroke="#4b2468" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>'
+            '<circle cx="36" cy="14" r="8" fill="#e2a15a"/>'
+            '<text x="78" y="46" font-family="Bricolage Grotesque, Arial, sans-serif" font-weight="700" font-size="42" letter-spacing="-1.8" fill="#4b2468">Vitality</text>'
+            '<text x="80" y="66" font-family="Hanken Grotesk, Arial, sans-serif" font-weight="700" font-size="10.5" letter-spacing="1.9" fill="#5a5162">PILATES E FISIOTERAPIA</text></svg>')
 
 if __name__ == "__main__":
     for name, fn in PAGES.items():
         (OUT / name).write_text(fn(), encoding="utf-8")
     (OUT / "favicon.svg").write_text(FAVICON, encoding="utf-8")
+    (OUT / "logo-vitality.svg").write_text(LOGO_SVG, encoding="utf-8")
     urls = "".join(f"  <url><loc>{DOMINIO}/{'' if n == 'index.html' else n}</loc></url>\n" for n in PAGES)
     (OUT / "sitemap.xml").write_text(f'<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n{urls}</urlset>\n', encoding="utf-8")
     (OUT / "robots.txt").write_text(f"User-agent: *\nAllow: /\nSitemap: {DOMINIO}/sitemap.xml\n", encoding="utf-8")

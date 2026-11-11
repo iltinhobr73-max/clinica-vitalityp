@@ -112,7 +112,11 @@ p { text-wrap: pretty; max-width: 62ch; }
 .site-header.is-stuck { border-bottom-color: var(--line); }
 .header-in { display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; height: var(--header-h); transition: height 0.25s var(--ease); }
 .is-stuck .header-in { height: 4rem; }
-.brand { display: inline-flex; flex-direction: column; justify-content: center; text-decoration: none; min-height: 2.75rem; line-height: 1; }
+.brand { display: inline-flex; align-items: center; gap: 0.75rem; text-decoration: none; min-height: 2.75rem; line-height: 1; }
+.brand-logo { width: 2.5rem; height: 2.5rem; flex: none; color: var(--plum); transition: width 0.25s var(--ease), height 0.25s var(--ease); }
+.brand-dot { fill: var(--wood); }
+.brand-text { display: flex; flex-direction: column; justify-content: center; }
+.is-stuck .brand-logo { width: 2.125rem; height: 2.125rem; }
 .brand-mark { font-family: var(--display); font-weight: 700; font-size: 1.75rem; letter-spacing: -0.045em; color: var(--plum); }
 .brand-sub { margin-top: 0.25rem; font-size: 0.625rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-soft); }
 .nav { display: none; }
@@ -290,7 +294,9 @@ body.menu-open { overflow: hidden; }
 .site-footer { background: var(--ink); color: #d9d3de; padding-block: clamp(3.5rem, 6vw, 5rem) 2rem; font-size: var(--fs-small); }
 .site-footer a { text-decoration: none; }
 .site-footer a:hover { text-decoration: underline; color: #fff; }
-.footer-brand .brand-mark { color: #fff; font-size: 2.5rem; }
+.footer-brand .brand-mark { color: #fff; font-size: 2.25rem; }
+.footer-brand .brand-logo { color: #fff; width: 3.25rem; height: 3.25rem; }
+.footer-brand .brand-sub { color: #b0a7b8; }
 .footer-brand p { margin-top: 0.875rem; max-width: 28ch; color: #b0a7b8; }
 .footer-col { margin-top: 2.25rem; }
 .footer-col h2 { font-family: var(--sans); font-size: var(--fs-micro); font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #b0a7b8; margin-bottom: 0.875rem; }
